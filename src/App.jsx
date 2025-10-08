@@ -53,7 +53,7 @@ export default function App() {
       }
     >
       {/* Navbar */}
-      <nav className="flex justify-between items-center px-8 py-4 shadow bg-white/90 dark:bg-[#1E1E1E]/90 backdrop-blur sticky top-0 z-50">
+      <nav className="flex flex-col sm:flex-row justify-between items-center px-4 sm:px-8 py-4 shadow bg-white/90 dark:bg-[#1E1E1E]/90 backdrop-blur sticky top-0 z-50">
         <h1 className="text-2xl font-bold text-blue-500">Norbs.dev</h1>
         <div className="flex gap-6 items-center text-sm font-medium">
           <a href="#about" className="hover:text-blue-500">
@@ -103,30 +103,33 @@ export default function App() {
         whileInView="visible"
         viewport={{ once: true }}
         variants={fadeUp}
-        className="flex flex-col items-center justify-center text-center py-24 px-6"
+        className="flex flex-col items-center justify-center text-center py-16 px-4 sm:py-24 sm:px-6"
       >
         <img
           src="/profile.jpg"
           alt="Norbert Jon Bobila"
-          className="w-40 h-40 rounded-full object-cover border-4 border-blue-500 shadow-lg mb-6"
+          className="w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover border-4 border-blue-500 shadow-lg mb-6"
         />
 
-        <h2 className="text-5xl font-bold mb-4">
+        <h2 className="text-3xl sm:text-5xl font-bold mb-4">
           Hi, I’m <span className="text-blue-500">Norbert Jon Bobila</span>
         </h2>
-        <p className="text-lg sm:text-xl max-w-2xl text-gray-600 dark:text-gray-600">
-          A passionate Java Developer specializing in backend development, building scalable, efficient, and secure systems.
+
+        <p className="text-base sm:text-lg md:text-xl max-w-md sm:max-w-2xl text-gray-600 dark:text-gray-600">
+          A passionate Java Developer specializing in backend development,
+          building scalable, efficient, and secure systems.
         </p>
-        <div className="mt-8 flex gap-4">
+
+        <div className="mt-8 flex flex-col sm:flex-row gap-4">
           <a
             href="#projects"
-            className="bg-blue-500 text-white px-5 py-2 rounded hover:bg-blue-600"
+            className="bg-blue-500 text-white px-5 py-2 rounded hover:bg-blue-600 text-center"
           >
             View Projects
           </a>
           <a
             href="#contact"
-            className="border border-blue-500 text-blue-500 px-5 py-2 rounded hover:bg-blue-500 hover:text-white"
+            className="border border-blue-500 text-blue-500 px-5 py-2 rounded hover:bg-blue-500 hover:text-white text-center"
           >
             Contact Me
           </a>
@@ -160,7 +163,7 @@ export default function App() {
         <h3 className="text-3xl font-semibold text-center mb-10 text-blue-500">
           Tech Stack
         </h3>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto">
           {techStacks.map((tech) => (
             <div
               key={tech.name}
@@ -188,7 +191,8 @@ export default function App() {
           Projects
         </h3>
 
-        <div className="flex justify-center">
+        {/* 🔹 Responsive project cards wrapper */}
+        <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-6">
           {[
             {
               title: "Inventory Management System",
@@ -198,6 +202,7 @@ export default function App() {
               backendRepo: "https://github.com/kyooxenn/Inventory-System",
               liveSite: "https://react-inventory-system.onrender.com/",
             },
+            // 👉 You can add more projects here
           ].map((proj) => (
             <motion.div
               key={proj.title}
@@ -247,6 +252,7 @@ export default function App() {
           ))}
         </div>
       </motion.section>
+
 
 
 
