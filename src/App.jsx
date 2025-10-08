@@ -114,7 +114,7 @@ export default function App() {
         <h2 className="text-5xl font-bold mb-4">
           Hi, I’m <span className="text-blue-500">Norbert Jon Bobila</span>
         </h2>
-        <p className="text-lg sm:text-xl max-w-2xl text-gray-600 dark:text-gray-300">
+        <p className="text-lg sm:text-xl max-w-2xl text-gray-600 dark:text-gray-600">
           A passionate Java Developer specializing in backend development, building scalable, efficient, and secure systems.
         </p>
         <div className="mt-8 flex gap-4">
@@ -143,7 +143,7 @@ export default function App() {
         className="py-16 px-8 max-w-4xl mx-auto"
       >
         <h3 className="text-3xl font-semibold mb-4 text-blue-500">About Me</h3>
-        <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+        <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-600">
           I specialize in backend development using Java and Spring Boot, focusing on scalability, performance, and clean architecture. I take pride in writing maintainable code and building APIs that drive seamless user experiences.
         </p>
       </motion.section>
@@ -187,21 +187,22 @@ export default function App() {
         <h3 className="text-3xl font-semibold text-center mb-10 text-blue-500">
           Projects
         </h3>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 justify-center">
+
+        <div className="flex justify-center">
           {[
             {
               title: "Inventory Management System",
               tech: "Spring Boot, React, MySQL",
               desc: "A full-stack app for managing inventory records.",
-              frontendRepo: "https://github.com/kyooxenn/Inventory-Frontend",
-              backendRepo: "https://github.com/kyooxenn/Inventory-Backend",
-              liveSite: "https://inventory.norbs.dev",
+              frontendRepo: "https://github.com/kyooxenn/React_Inventory_System",
+              backendRepo: "https://github.com/kyooxenn/Inventory-System",
+              liveSite: "https://react-inventory-system.onrender.com/",
             },
           ].map((proj) => (
             <motion.div
               key={proj.title}
               variants={fadeUp}
-              className="p-6 bg-white dark:bg-[#2B2B2B] rounded-xl shadow hover:shadow-lg transition flex flex-col justify-between w-full sm:w-80 md:w-96 mx-auto"
+              className="p-6 bg-white dark:bg-[#2B2B2B] rounded-xl shadow hover:shadow-lg transition flex flex-col justify-between w-full sm:w-80 md:w-96"
             >
               <div className="flex flex-col items-center">
                 <h4 className="text-xl font-bold mb-2 text-blue-500 text-center">{proj.title}</h4>
@@ -259,20 +260,20 @@ export default function App() {
         className="py-16 px-8 text-center"
       >
         <h3 className="text-3xl font-semibold mb-6 text-blue-500">Get in Touch</h3>
-        <p className="mb-4 text-gray-700 dark:text-gray-300">
+        <p className="mb-4 text-gray-700 dark:text-gray-600">
           I’m open for new Java developer opportunities — let’s build something great together!
         </p>
 
-        <div className="space-y-3 mb-8 text-gray-700 dark:text-gray-300">
+        <div className="space-y-3 mb-8 text-gray-700 dark:text-gray-600">
          <p className="flex items-center justify-center gap-2">
                     <FaLinkedin className="text-blue-600 text-xl" />
                     <a
-                      href="https://www.linkedin.com/in/norbertjonbobila/"
+                      href="https://www.linkedin.com/in/nbobila/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-blue-500 hover:underline"
                     >
-                      linkedin.com/in/norbert-jon-bobila-bb4429268
+                    www.linkedin.com/in/nbobila
                     </a>
                   </p>
           <p>
