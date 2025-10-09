@@ -198,7 +198,7 @@ export default function App() {
               title: "Inventory Management System",
               tech: "Spring Boot, React, MySQL",
               desc: "A full-stack app for managing inventory records.",
-              frontendRepo: "https://github.com/kyooxenn/React_Inventory_System",
+              frontendRepo: "https://github.com/kyooxenn/inventory_system_react",
               backendRepo: "https://github.com/kyooxenn/Inventory-System",
               liveSite: "https://react-inventory-system.onrender.com/",
             },
