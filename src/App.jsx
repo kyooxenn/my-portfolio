@@ -56,29 +56,29 @@ export default function App() {
       <nav className="flex flex-col sm:flex-row justify-between items-center px-4 sm:px-8 py-4 shadow bg-white/90 dark:bg-[#1E1E1E]/90 backdrop-blur sticky top-0 z-50">
         <h1 className="text-2xl font-bold text-blue-500">Norbs.dev</h1>
         <div className="flex gap-6 items-center text-sm font-medium">
-          <a href="#about" className="hover:text-blue-500">
+          <a href="#about" className="text-gray-900 dark:text-white hover:text-blue-500 dark:hover:text-blue-400">
             About
           </a>
-          <a href="#projects" className="hover:text-blue-500">
+          <a href="#projects" className="text-gray-900 dark:text-white hover:text-blue-500 dark:hover:text-blue-400">
             Projects
           </a>
-          <a href="#tech" className="hover:text-blue-500">
+          <a href="#tech" className="text-gray-900 dark:text-white hover:text-blue-500 dark:hover:text-blue-400">
             Tech Stack
           </a>
-          <a href="#contact" className="hover:text-blue-500">
+          <a href="#contact" className="text-gray-900 dark:text-white hover:text-blue-500 dark:hover:text-blue-400">
             Contact
           </a>
 
           {/* GitHub link */}
           <a
-            href="https://github.com/kyooxenn"  // 🔹 replace with your actual GitHub URL
+            href="https://github.com/kyooxenn"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-700 dark:text-gray-200 hover:text-blue-500"
+            className="text-gray-900 dark:text-white hover:text-blue-500 dark:hover:text-blue-400"
             title="GitHub Profile"
           >
             <svg
-              xmlns="htåtp://www.w3.org/2000/svg"
+              xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
               viewBox="0 0 24 24"
               className="w-6 h-6"
@@ -266,7 +266,7 @@ export default function App() {
         className="py-16 px-8 text-center"
       >
         <h3 className="text-3xl font-semibold mb-6 text-blue-500">Get in Touch</h3>
-        <p className="mb-4 text-gray-700 dark:text-gray-600">
+        <p className="mb-4 text-gray dark:text-black-700">
           I’m open for new Java developer opportunities — let’s build something great together!
         </p>
 
