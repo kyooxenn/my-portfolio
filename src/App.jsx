@@ -65,7 +65,7 @@ export default function App() {
             target="_blank"
             rel="noopener noreferrer"
             title="GitHub Profile"
-            className="hover:text-blue-500 dark:hover:text-blue-400 transition"
+            className="text-gray-900 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition"
           >
             <SiGithub className="text-2xl" />
           </a>
