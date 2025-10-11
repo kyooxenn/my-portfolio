@@ -115,7 +115,7 @@ export default function App() {
           Hi, I’m <span className="text-blue-500">Norbert Jon Bobila</span>
         </h2>
 
-        <p className="text-base sm:text-lg md:text-xl max-w-md sm:max-w-2xl text-gray-600 dark:text-gray-600">
+        <p className="text-base sm:text-lg md:text-xl max-w-md sm:max-w-2xl text-gray dark:text-black-700">
           A passionate Java Developer specializing in backend development,
           building scalable, efficient, and secure systems.
         </p>
@@ -123,16 +123,28 @@ export default function App() {
         <div className="mt-8 flex flex-col sm:flex-row gap-4">
           <a
             href="#projects"
-            className="bg-blue-500 text-white px-5 py-2 rounded hover:bg-blue-600 text-center"
+            className="bg-blue-500 text-white border border-blue-500 px-5 py-2 rounded hover:bg-white hover:text-blue-500 transition"
           >
             View Projects
           </a>
           <a
             href="#contact"
-            className="border border-blue-500 text-blue-500 px-5 py-2 rounded hover:bg-blue-500 hover:text-white text-center"
+            className="bg-blue-500 text-white border border-blue-500 px-5 py-2 rounded hover:bg-white hover:text-blue-500 transition"
           >
             Contact Me
           </a>
+
+          {/* ✅ Animated Download CV Button */}
+            <motion.a
+              href="/NorbertBobila_CV.pdf"
+              download="NorbertBobila_CV.pdf"
+              className="bg-blue-500 text-white border border-blue-500 px-5 py-2 rounded hover:bg-white hover:text-blue-500 transition"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              📄 Download CV
+            </motion.a>
+
         </div>
       </motion.header>
 
@@ -146,7 +158,7 @@ export default function App() {
         className="py-16 px-8 max-w-4xl mx-auto"
       >
         <h3 className="text-3xl font-semibold mb-4 text-blue-500">About Me</h3>
-        <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-600">
+        <p className="text-lg leading-relaxed text-gray dark:text-black-700">
           I specialize in backend development using Java and Spring Boot, focusing on scalability, performance, and clean architecture. I take pride in writing maintainable code and building APIs that drive seamless user experiences.
         </p>
       </motion.section>
@@ -272,7 +284,7 @@ export default function App() {
 
         <div className="space-y-3 mb-8 text-gray-700 dark:text-gray-600">
          <p className="flex items-center justify-center gap-2">
-                    <FaLinkedin className="text-blue-600 text-xl" />
+                    <FaLinkedin className="text-blue-600 text-xl" /> LinkedIn:{" "}
                     <a
                       href="https://www.linkedin.com/in/nbobila/"
                       target="_blank"
@@ -305,7 +317,7 @@ export default function App() {
 
         <a
           href="mailto:norbertbobila12@gmail.com"
-          className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600"
+          className="bg-blue-500 text-white border border-blue-500 px-5 py-2 rounded hover:bg-white hover:text-blue-500 transition"
         >
           Email Me
         </a>
