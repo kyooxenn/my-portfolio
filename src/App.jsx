@@ -16,7 +16,7 @@ import {
 import { FaLinkedin, FaJava } from "react-icons/fa";
 
 export default function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   const fadeUp = {
     hidden: { opacity: 0, y: 40 },
@@ -192,7 +192,7 @@ export default function App() {
           {[
             {
               title: "Inventory Management System",
-              tech: "Spring Boot, React, MySQL, Redis",
+              tech: "Spring Boot, React, embedded H2 Database, Redis",
               desc: "A lightweight full-stack inventory management app with Create, Read, Update, and Delete (CRUD) operations, enhanced with Redis caching for faster data access and improved performance.",
               frontendRepo:
                 "https://github.com/kyooxenn/inventory_system_react",
