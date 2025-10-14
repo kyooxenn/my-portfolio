@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   SiSpringboot,
@@ -64,6 +64,34 @@ export default function App() {
     { label: "View Projects", href: "#projects" },
     { label: "Contact Me", href: "#contact" },
   ];
+
+  // ✅ Famous quotes
+  const quotes = useMemo(
+    () => [
+      "“The best way to predict the future is to invent it.” — Alan Kay",
+      "“Code is like humor. When you have to explain it, it’s bad.” — Cory House",
+      "“Programs must be written for people to read, and only incidentally for machines to execute.” — Harold Abelson",
+      "“First, solve the problem. Then, write the code.” — John Johnson",
+      "“Simplicity is the soul of efficiency.” — Austin Freeman",
+      "“Talk is cheap. Show me the code.” — Linus Torvalds",
+      "“Experience is the name everyone gives to their mistakes.” — Oscar Wilde",
+      "“Before software can be reusable it first has to be usable.” — Ralph Johnson",
+      "“Make it work, make it right, make it fast.” — Kent Beck",
+    ],
+    []
+  );
+
+  const [currentQuote, setCurrentQuote] = useState(quotes[0]);
+
+  // ✅ Change quote every 10 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const random = Math.floor(Math.random() * quotes.length);
+      setCurrentQuote(quotes[random]);
+    }, 8000); // ← 8 seconds
+
+    return () => clearInterval(interval);
+  }, [quotes]);
 
   return (
     <div
@@ -258,10 +286,19 @@ export default function App() {
         </a>
       </motion.section>
 
-      {/* Footer */}
-      <footer className="py-6 text-center border-t dark:border-gray-700 text-gray-500 dark:text-gray-400">
-        <p>© {new Date().getFullYear()} Norbs | Built with React, Tailwind CSS & Framer Motion</p>
-      </footer>
+     <footer className="py-6 text-center border-t dark:border-gray-700 text-gray-500 dark:text-gray-400">
+       <motion.p
+         key={currentQuote} // triggers smooth transition
+         initial={{ opacity: 0, y: 10 }}
+         animate={{ opacity: 1, y: 0 }}
+         exit={{ opacity: 0, y: -10 }}
+         transition={{ duration: 0.6 }}
+         className="text-sm italic mb-2"
+         >
+         {currentQuote}
+       </motion.p>
+       <p>© {new Date().getFullYear()} Norbs | Built with React, Tailwind CSS & Framer Motion</p>
+     </footer>
     </div>
   );
 }
