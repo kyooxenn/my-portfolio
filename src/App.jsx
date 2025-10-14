@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import {
   SiSpringboot,
@@ -18,24 +18,51 @@ import { FaLinkedin, FaJava } from "react-icons/fa";
 export default function App() {
   const [darkMode, setDarkMode] = useState(true);
 
-  const fadeUp = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-  };
+  // ✅ useMemo prevents recreation of static objects on every render
+  const fadeUp = useMemo(
+    () => ({
+      hidden: { opacity: 0, y: 40 },
+      visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+    }),
+    []
+  );
 
-  const techStacks = [
-    { name: "Java", icon: <FaJava className="text-[#f89820]" /> },
-    { name: "Spring Boot", icon: <SiSpringboot className="text-[#6DB33F]" /> },
-    { name: "React", icon: <SiReact className="text-[#61DAFB]" /> },
-    { name: "MySQL", icon: <SiMysql className="text-[#00618A]" /> },
-    { name: "Redis", icon: <SiRedis className="text-[#D82C20]" /> },
-    { name: "Docker", icon: <SiDocker className="text-[#2496ED]" /> },
-    { name: "Git", icon: <SiGit className="text-[#F1502F]" /> },
-    { name: "GitHub", icon: <SiGithub className="text-[#181717]" /> },
-    { name: "GitLab", icon: <SiGitlab className="text-[#FC6D26]" /> },
-    { name: "Postman", icon: <SiPostman className="text-[#FF6C37]" /> },
-    { name: "SonarQube", icon: <SiSonarqube className="text-[#4E9BCD]" /> },
-    { name: "RESTful API", icon: <SiSwagger className="text-[#0088CC]" /> },
+  const techStacks = useMemo(
+    () => [
+      { name: "Java", icon: <FaJava className="text-[#f89820]" /> },
+      { name: "Spring Boot", icon: <SiSpringboot className="text-[#6DB33F]" /> },
+      { name: "React", icon: <SiReact className="text-[#61DAFB]" /> },
+      { name: "MySQL", icon: <SiMysql className="text-[#00618A]" /> },
+      { name: "Redis", icon: <SiRedis className="text-[#D82C20]" /> },
+      { name: "Docker", icon: <SiDocker className="text-[#2496ED]" /> },
+      { name: "Git", icon: <SiGit className="text-[#F1502F]" /> },
+      { name: "GitHub", icon: <SiGithub className="text-[#181717]" /> },
+      { name: "GitLab", icon: <SiGitlab className="text-[#FC6D26]" /> },
+      { name: "Postman", icon: <SiPostman className="text-[#FF6C37]" /> },
+      { name: "SonarQube", icon: <SiSonarqube className="text-[#4E9BCD]" /> },
+      { name: "RESTful API", icon: <SiSwagger className="text-[#0088CC]" /> },
+    ],
+    []
+  );
+
+  const projects = useMemo(
+    () => [
+      {
+        title: "Inventory Management System",
+        tech: "Spring Boot, React, H2 Database, Redis",
+        desc: "A lightweight full-stack inventory management app with CRUD operations, enhanced with Redis caching for faster performance.",
+        frontendRepo: "https://github.com/kyooxenn/inventory_system_react",
+        backendRepo: "https://github.com/kyooxenn/Inventory-System",
+        liveSite: "https://react-inventory-system.onrender.com/",
+      },
+    ],
+    []
+  );
+
+  const navItems = ["About", "Projects", "Tech Stack", "Contact"];
+  const mainLinks = [
+    { label: "View Projects", href: "#projects" },
+    { label: "Contact Me", href: "#contact" },
   ];
 
   return (
@@ -49,7 +76,7 @@ export default function App() {
         <h1 className="text-2xl font-bold text-blue-500">Norbs.dev</h1>
 
         <div className="flex gap-5 items-center mt-2 sm:mt-0 text-sm font-medium">
-          {["About", "Projects", "Tech Stack", "Contact"].map((item) => (
+          {navItems.map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase().replace(" ", "")}`}
@@ -72,7 +99,7 @@ export default function App() {
 
           {/* Dark Mode Toggle */}
           <button
-            onClick={() => setDarkMode(!darkMode)}
+            onClick={() => setDarkMode((prev) => !prev)}
             className="px-3 py-1 rounded bg-blue-500 text-white hover:bg-blue-600 transition"
           >
             {darkMode ? "Light" : "Dark"}
@@ -97,37 +124,24 @@ export default function App() {
           Hi, I’m <span className="text-blue-500">Norbert Jon Bobila</span>
         </h2>
         <p className="text-base sm:text-lg md:text-xl max-w-md sm:max-w-2xl text-gray dark:text-black-700">
-          A passionate Java Developer specializing in backend development,
-          building scalable, efficient, and secure systems.
+          A passionate Java Developer specializing in backend systems.
         </p>
 
-        {/* Buttons */}
         <div className="mt-8 flex flex-col sm:flex-row gap-4">
-          {[
-            { label: "View Projects", href: "#projects" },
-            { label: "Contact Me", href: "#contact" },
-          ].map((btn) => (
-            <motion.a
-              key={btn.label}
-              href={btn.href}
-              className="bg-blue-500 text-white border border-blue-500 px-5 py-2 rounded hover:bg-white hover:text-blue-500 transition font-medium text-center"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {btn.label}
-            </motion.a>
-          ))}
-
-          {/* Animated Download CV Button */}
-          <motion.a
-            href="/NorbertBobila_CV.pdf"
-            download="NorbertBobila_CV.pdf"
-            className="bg-blue-500 text-white border border-blue-500 px-5 py-2 rounded hover:bg-white hover:text-blue-500 transition font-medium text-center"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            📄 Download CV
-          </motion.a>
+          {[...mainLinks, { label: "📄 Download CV", href: "/NorbertBobila_CV.pdf", download: true }].map(
+            ({ label, href, download }) => (
+              <motion.a
+                key={label}
+                href={href}
+                download={download ? "NorbertBobila_CV.pdf" : undefined}
+                className="bg-blue-500 text-white border border-blue-500 px-5 py-2 rounded hover:bg-white hover:text-blue-500 transition font-medium text-center"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {label}
+              </motion.a>
+            )
+          )}
         </div>
       </motion.header>
 
@@ -142,9 +156,7 @@ export default function App() {
       >
         <h3 className="text-3xl font-semibold mb-6 text-blue-500">About Me</h3>
         <p className="text-lg leading-relaxed text-gray dark:text-black-700">
-          I’m a backend developer focused on building scalable and efficient
-          systems using Java and Spring Boot. I value clean architecture,
-          maintainable code, and strong teamwork to create impactful software.
+          I’m a backend developer focused on scalable systems with Java and Spring Boot.
         </p>
       </motion.section>
 
@@ -161,15 +173,15 @@ export default function App() {
           Tech Stack
         </h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 max-w-6xl mx-auto">
-          {techStacks.map((tech) => (
+          {techStacks.map(({ name, icon }) => (
             <motion.div
-              key={tech.name}
+              key={name}
               whileHover={{ scale: 1.05 }}
               className="flex flex-col items-center gap-2 p-4 bg-white dark:bg-[#2B2B2B] rounded-xl shadow hover:shadow-lg transition"
             >
-              <div className="text-4xl">{tech.icon}</div>
+              <div className="text-4xl">{icon}</div>
               <p className="font-medium text-gray-700 dark:text-gray-200">
-                {tech.name}
+                {name}
               </p>
             </motion.div>
           ))}
@@ -188,63 +200,20 @@ export default function App() {
         <h3 className="text-3xl font-semibold text-center mb-10 text-blue-500">
           Projects
         </h3>
-        <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-6">
-          {[
-            {
-              title: "Inventory Management System",
-              tech: "Spring Boot, React, embedded H2 Database, Redis",
-              desc: "A lightweight full-stack inventory management app with Create, Read, Update, and Delete (CRUD) operations, enhanced with Redis caching for faster data access and improved performance.",
-              frontendRepo:
-                "https://github.com/kyooxenn/inventory_system_react",
-              backendRepo: "https://github.com/kyooxenn/Inventory-System",
-              liveSite: "https://react-inventory-system.onrender.com/",
-            },
-          ].map((proj) => (
+        <div className="flex flex-wrap justify-center gap-6">
+          {projects.map(({ title, tech, desc, frontendRepo, backendRepo, liveSite }) => (
             <motion.div
-              key={proj.title}
+              key={title}
               variants={fadeUp}
               className="p-6 bg-white dark:bg-[#2B2B2B] rounded-xl shadow hover:shadow-lg transition flex flex-col justify-between w-full sm:w-80 md:w-96"
             >
-              <h4 className="text-xl font-bold mb-2 text-blue-500 text-center">
-                {proj.title}
-              </h4>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mb-2 text-center">
-                {proj.tech}
-              </p>
-              <p className="text-gray-700 dark:text-gray-300 mb-4 text-center">
-                {proj.desc}
-              </p>
+              <h4 className="text-xl font-bold mb-2 text-blue-500 text-center">{title}</h4>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-2 text-center">{tech}</p>
+              <p className="text-gray-700 dark:text-gray-300 mb-4 text-center">{desc}</p>
               <div className="flex gap-4 flex-wrap justify-center">
-                {proj.frontendRepo && (
-                  <a
-                    href={proj.frontendRepo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-blue-500 hover:underline"
-                  >
-                    🔹 Frontend
-                  </a>
-                )}
-                {proj.backendRepo && (
-                  <a
-                    href={proj.backendRepo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-blue-500 hover:underline"
-                  >
-                    🔹 Backend
-                  </a>
-                )}
-                {proj.liveSite && (
-                  <a
-                    href={proj.liveSite}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-blue-500 hover:underline"
-                  >
-                    🌐 Live
-                  </a>
-                )}
+                {frontendRepo && <a href={frontendRepo} target="_blank" className="text-sm text-blue-500 hover:underline">🔹 Frontend</a>}
+                {backendRepo && <a href={backendRepo} target="_blank" className="text-sm text-blue-500 hover:underline">🔹 Backend</a>}
+                {liveSite && <a href={liveSite} target="_blank" className="text-sm text-blue-500 hover:underline">🌐 Live</a>}
               </div>
             </motion.div>
           ))}
@@ -260,17 +229,14 @@ export default function App() {
         variants={fadeUp}
         className="py-16 px-8 text-center"
       >
-        <h3 className="text-3xl font-semibold mb-6 text-blue-500">
-          Get in Touch
-        </h3>
+        <h3 className="text-3xl font-semibold mb-6 text-blue-500">Get in Touch</h3>
         <p className="mb-4 text-gray dark:text-black-700 max-w-2xl mx-auto">
-          I’m open to new Java Developer opportunities — let’s collaborate and
-          build something impactful.
+          Open to Java Developer opportunities—let’s collaborate.
         </p>
 
         <div className="space-y-3 mb-8 text-gray-700 dark:text-gray-300">
           <p className="flex items-center justify-center gap-2">
-            <FaLinkedin className="text-blue-600 text-xl" />{" "}
+            <FaLinkedin className="text-blue-600 text-xl" />
             <a
               href="https://www.linkedin.com/in/nbobila/"
               target="_blank"
@@ -280,24 +246,8 @@ export default function App() {
               www.linkedin.com/in/nbobila
             </a>
           </p>
-          <p>
-            📧{" "}
-            <a
-              href="mailto:norbertbobila12@gmail.com"
-              className="text-blue-500 hover:underline"
-            >
-              norbertbobila12@gmail.com
-            </a>
-          </p>
-          <p>
-            📞{" "}
-            <a
-              href="tel:+639603717056"
-              className="text-blue-500 hover:underline"
-            >
-              +63 960 371 7056
-            </a>
-          </p>
+          <p>📧 <a href="mailto:norbertbobila12@gmail.com" className="text-blue-500 hover:underline">norbertbobila12@gmail.com</a></p>
+          <p>📞 <a href="tel:+639603717056" className="text-blue-500 hover:underline">+63 960 371 7056</a></p>
         </div>
 
         <a
@@ -310,10 +260,7 @@ export default function App() {
 
       {/* Footer */}
       <footer className="py-6 text-center border-t dark:border-gray-700 text-gray-500 dark:text-gray-400">
-        <p>
-          © {new Date().getFullYear()} Norbs | Built with React, Tailwind CSS &
-          Framer Motion
-        </p>
+        <p>© {new Date().getFullYear()} Norbs | Built with React, Tailwind CSS & Framer Motion</p>
       </footer>
     </div>
   );
