@@ -49,7 +49,7 @@ export default function App() {
     () => [
       {
         title: "Inventory Management System",
-        tech: "Spring Boot, React, H2 Database, Redis",
+        tech: "Spring Boot, React, MySQL, Redis",
         desc: "A lightweight full-stack inventory management app with CRUD operations, enhanced with Redis caching for faster performance.",
         frontendRepo: "https://github.com/kyooxenn/inventory_system_react",
         backendRepo: "https://github.com/kyooxenn/Inventory-System",
