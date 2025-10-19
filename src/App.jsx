@@ -297,7 +297,8 @@ export default function App() {
          >
          {currentQuote}
        </motion.p>
-       <p>© {new Date().getFullYear()} Norbert Jon Bobila | All rights reserved.</p>
+        © {new Date().getFullYear()} Norbert Jon Bobila | {" "}
+                           <span className="text-blue-400">All rights reserved.</span>
      </footer>
     </div>
   );
