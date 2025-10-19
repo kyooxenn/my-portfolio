@@ -297,7 +297,7 @@ export default function App() {
          >
          {currentQuote}
        </motion.p>
-       <p>© {new Date().getFullYear()} Norbs | Built with React, Tailwind CSS & Framer Motion</p>
+       <p>© {new Date().getFullYear()} Norbert Jon Bobila | All rights reserved.</p>
      </footer>
     </div>
   );
