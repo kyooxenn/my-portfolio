@@ -48,7 +48,7 @@ export default function App() {
   const projects = useMemo(
     () => [
       {
-        title: "Inventory Management System",
+        title: "N-Vent",
         tech: "Spring Boot, React, MySQL, Redis, JWT, Email OTP",
         desc: "A full-stack inventory app with fast CRUD operations powered by Redis caching, secure JWT-based user roles, and email OTP verification for account authentication.",
         frontendRepo: "https://github.com/kyooxenn/inventory_system_react",
