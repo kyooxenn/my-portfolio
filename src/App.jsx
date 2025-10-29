@@ -49,8 +49,8 @@ export default function App() {
     () => [
       {
         title: "Inventory Management System",
-        tech: "Spring Boot, React, MySQL, Redis",
-        desc: "A lightweight full-stack inventory management app with CRUD operations, enhanced with Redis caching for faster performance.",
+        tech: "Spring Boot, React, MySQL, Redis, JWT, Email OTP",
+        desc: "A full-stack inventory app with fast CRUD operations powered by Redis caching, secure JWT-based user roles, and email OTP verification for account authentication.",
         frontendRepo: "https://github.com/kyooxenn/inventory_system_react",
         backendRepo: "https://github.com/kyooxenn/Inventory-System",
         liveSite: "https://react-inventory-system.onrender.com/",
